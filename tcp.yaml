@@ -1,0 +1,13 @@
+tcp:
+  routers:
+    allbackendRouter:
+      rule: "HostSNI(`*`)"
+      service: allbackend
+  services:
+    allbackend:
+      loadBalancer:
+        servers:
+          - address: '127.0.0.1:1111'
+          - address: '127.0.0.1:2222'
+          - address: '127.0.0.1:3333'
+          - address: '127.0.0.1:4444'

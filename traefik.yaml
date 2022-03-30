@@ -1,0 +1,22 @@
+# Static configuration
+entrypoints:
+  unsecure:
+    address: :80
+  secure:
+    address: :443
+certificateResolves:
+  myresolvers:
+    acme:
+      email: google@gmail.com
+      storage: acme.json
+      httpChallenge:
+        entryPoint: unsecure
+providers:
+  file:
+    # filename: all.yaml
+    filename: tls.yaml
+    # filename: split.yaml
+    # filename: blockadmin.yaml
+    # filename: wrr.yaml
+    # filename: tcp.yaml
+    watch: true

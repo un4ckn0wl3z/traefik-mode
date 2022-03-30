@@ -1,0 +1,21 @@
+http:
+  routers:
+    allbackendRouter:
+      rule: Host(`localhost`)
+      service: wrr
+  services:
+    wrr:
+      weighted:
+        services:
+          - name: backend1
+            weight: 4
+          - name: backend2
+            weight: 1
+    backend1:
+      loadBalancer:
+        servers:
+          - url: 'http://127.0.0.1:1111/'
+    backend2:
+      loadBalancer:
+        servers:
+          - url: 'http://127.0.0.1:2222/'
